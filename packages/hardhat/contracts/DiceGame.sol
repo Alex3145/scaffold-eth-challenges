@@ -37,10 +37,10 @@ contract DiceGame {
             return;
         }
 
+        console.log("diceGame roll value:", roll);
         uint256 amount = prize;
         (bool sent, ) = msg.sender.call{value: amount}("");
         require(sent, "Failed to send Ether");
-
         resetPrize();
         emit Winner(msg.sender, amount);
     }
